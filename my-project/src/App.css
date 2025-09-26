@@ -1,0 +1,22 @@
+/* In your index.css or App.css */
+@keyframes swing {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+}
+
+.animate-swing {
+  animation: swing 2s ease-in-out;
+}
+
+.transition-duration-1050 {
+  transition-duration: 1050ms;
+}
+
+/* Clip path utilities */
+.clip-rect-tlbr {
+  clip-path: rect(0 1em 1em 0.5em);
+}
+
+.clip-rect-tl {
+  clip-path: rect(0 0.5em 1em 0em);
+}
