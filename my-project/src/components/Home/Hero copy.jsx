@@ -213,16 +213,16 @@ const Hero = () => {
                 <div className="overflow-hidden">
                   <h1 
                     className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-white whitespace-nowrap overflow-hidden text-ellipsis"
-                    style={{ 
-                      whiteSpace: 'nowrap', 
-                      overflow: 'hidden', 
-                      textOverflow: 'ellipsis',
-                      maxWidth: '100%',
-                      lineHeight: '1.2',
-                      display: 'block',
-                      margin: 0,
-                      padding: '2px 0'
-                    }}
+                    // style={{ 
+                    //   whiteSpace: 'nowrap', 
+                    //   overflow: 'hidden', 
+                    //   textOverflow: 'ellipsis',
+                    //   maxWidth: '100%',
+                    //   lineHeight: '1.2',
+                    //   display: 'block',
+                    //   margin: 0,
+                    //   padding: '2px 0'
+                    // }}
                   >
                     {currentUniversity.name}
                   </h1>

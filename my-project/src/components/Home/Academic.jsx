@@ -25,7 +25,7 @@ const Academic = () => {
 
       {/* First Marquee */}
       <Marquee speed={50} gradient={false}>
-        <div className="flex gap-6 mt-10">
+        <div className="flex gap-6 mt-10 ">
           {Courses.map((course) => (
             <button
               key={course.id}

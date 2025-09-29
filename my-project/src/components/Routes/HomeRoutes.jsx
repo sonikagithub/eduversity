@@ -5,6 +5,9 @@ import TopSpecilisation from '../Home/TopSpecilisation'
 import Academic from '../Home/Academic'
 import GrowSkills from '../Home/GrowSkills'
 import Counter from '../Home/Counter'
+import CallExperts from '../Home/CallExperts'
+import Testmonials from '../Home/Testmonials'
+import Blog from '../Home/Blog'
 const HomeRoutes = () => {
   return (
     <div>
@@ -14,6 +17,9 @@ const HomeRoutes = () => {
       <Academic/>
       <GrowSkills/>
       <Counter/>
+      <CallExperts/>
+      <Testmonials/>
+      <Blog/>
     </div>
   )
 }

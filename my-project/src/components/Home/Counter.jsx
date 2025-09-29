@@ -1,53 +1,59 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
-const CircularProgress = ({ percent, delay = 0 }) => {
-  const [displayPercent, setDisplayPercent] = useState(0);
+const CircularProgressBar = ({ 
+  lineWidth = 6, 
+  color = "#1ABC9C", 
+  startingPosition = 25, 
+  percent = 80, 
+  percentage = true,
+  text = "JQuery Script Net",
+  animationDuration = 3000 
+}) => {
+  const [progress, setProgress] = useState(startingPosition);
   const [isVisible, setIsVisible] = useState(false);
-  const circleRef = useRef(null);
+  const progressRef = useRef(null);
   const animationRef = useRef(null);
-  const containerRef = useRef(null);
 
-  // Intersection Observer to trigger animation when component is in viewport
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => setIsVisible(true), delay);
+          setIsVisible(true);
         }
       },
       { threshold: 0.1 }
     );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
+    if (progressRef.current) {
+      observer.observe(progressRef.current);
     }
 
     return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
+      if (progressRef.current) {
+        observer.unobserve(progressRef.current);
       }
     };
-  }, [delay]);
+  }, []);
 
-  // Animation effect
   useEffect(() => {
     if (!isVisible) return;
 
-    let startTime = null;
-    const duration = 1500;
-    const startValue = 0;
-    const endValue = percent;
+    let startValue = startingPosition;
+    const startTime = Date.now();
 
-    const animate = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
+    const animate = () => {
+      const currentTime = Date.now();
+      const elapsed = currentTime - startTime;
+      const progressRatio = Math.min(elapsed / animationDuration, 1);
 
-      const easedProgress = 0.5 - Math.cos(progress * Math.PI) / 2;
-      const currentValue = Math.ceil(startValue + easedProgress * (endValue - startValue));
+      const easedProgress = progressRatio < 0.5 
+        ? 2 * progressRatio * progressRatio 
+        : -1 + (4 - 2 * progressRatio) * progressRatio;
 
-      setDisplayPercent(currentValue);
+      const currentProgress = Math.floor(startValue + easedProgress * (percent - startValue));
+      setProgress(currentProgress);
 
-      if (progress < 1) {
+      if (progressRatio < 1) {
         animationRef.current = requestAnimationFrame(animate);
       }
     };
@@ -59,58 +65,113 @@ const CircularProgress = ({ percent, delay = 0 }) => {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [percent, isVisible]);
+  }, [isVisible, percent, startingPosition, animationDuration]);
 
-  const degrees = percent * 3.6;
-  const rotation = percent > 50 ? 180 + (percent - 50) * 3.6 : degrees;
+  const radius = 90;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - (progress /100) * circumference;
 
   return (
-    <div ref={containerRef} className="relative w-32 h-32 rounded-full overflow-hidden">
-      {/* Left half */}
-      <div className="absolute left-0 top-0 w-1/2 h-full bg-[#EE2C3C] overflow-hidden">
-        <div
-          className="absolute left-0 top-0 w-full h-full bg-[#EE2C3C] rounded-full"
-          style={{
-            transform: `rotate(${percent > 50 ? 180 : degrees}deg)`,
-            transformOrigin: 'right center'
-          }}
-        ></div>
-      </div>
+    <div ref={progressRef} className="my-progress-bar flex justify-center items-center">
+      <div className="relative w-48 h-48">
+        <svg 
+          className="w-full h-full transform -rotate-90 circular-progress-bar" 
+          viewBox="0 0 200 200"
+        >
+          <circle
+            cx="100"
+            cy="100"
+            r={radius}
+            stroke="#e5e7eb"
+            strokeWidth={lineWidth}
+            fill="none"
+          />
+          <circle
+            cx="100"
+            cy="100"
+            r={radius}
+            stroke={color}
+            strokeWidth={lineWidth}
+            strokeLinecap="round"
+            fill="none"
+            strokeDasharray={circumference}
+            strokeDashoffset={strokeDashoffset}
+            className="transition-all duration-300 ease-out"
+          />
+        </svg>
 
-      {/* Right half */}
-      {percent > 50 && (
-        <div className="absolute right-0 top-0 w-1/2 h-full bg-[#EE2C3C] overflow-hidden">
-          <div
-            className="absolute right-0 top-0 w-full h-full bg-[#EE2C3C] rounded-full"
-            style={{
-              transform: `rotate(${(percent - 50) * 3.6}deg)`,
-              transformOrigin: 'left center'
-            }}
-          ></div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <div className="text-center">
+            <div className="progress-percentage mb-1">
+              <span className="text-3xl font-bold text-gray-800">
+                {progress}
+              </span>
+            </div>
+            <div className="progress-text">
+              <span className="text-sm text-gray-600">
+                {text}
+              </span>
+            </div>
+          </div>
         </div>
-      )}
-
-      {/* Inner white circle */}
-      <div className="absolute inset-3 bg-white rounded-full z-10 flex items-center justify-center">
-        <span className="text-2xl font-bold text-gray-800">{displayPercent}%</span>
       </div>
     </div>
   );
 };
 
-const Counter = () => {
-  const progressData = [75, 25, 50, 95];
+const ProgressBarDemo = () => {
+  const progressItems = [
+    {
+      lineWidth: 6,
+      color: "#1ABC9C",
+      startingPosition: 25,
+      percent: 50,
+      text: "Degree Programs"
+    },
+    {
+      lineWidth: 8,
+      color: "#3498DB",
+      startingPosition: 10,
+      percent: 15,
+      text: "Years Of History"
+    },
+    {
+      lineWidth: 6,
+      color: "#9B59B6",
+      startingPosition: 40,
+      percent: 5000,
+      text: "Students"
+    },
+    {
+      lineWidth: 10,
+      color: "#E74C3C",
+      startingPosition: 5,
+      percent: 500,
+      text: "Alumni Network"
+    }
+  ];
 
   return (
-    <div className=" flex items-center justify-center bg-gray-50 py-12 px-4">
-      {/* Banner Card */}
-      <div className="w-full max-w-6xl bg-white shadow-lg rounded-2xl p-8 border border-gray-200">
-        <h2 className="text-2xl font-semibold text-gray-800 text-center mb-8">
-          Performance Statistics
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
-          {progressData.map((percent, index) => (
-            <CircularProgress key={index} percent={percent} delay={index * 300} />
+    <div className="min-h-screen bg-gray-50 py-12 px-4 flex items-center justify-center">
+      <div className="w-full max-w-6xl">
+        <h1 className="text-4xl font-bold text-center text-gray-800 mb-4">
+          Circular Progress Bars
+        </h1>
+        <p className="text-xl text-center text-gray-600 mb-12">
+          Four progress indicators in one line
+        </p>
+        
+        <div className="flex justify-center items-center gap-6">
+          {progressItems.map((item, index) => (
+            <CircularProgressBar
+              key={index}
+              lineWidth={item.lineWidth}
+              color={item.color}
+              startingPosition={item.startingPosition}
+              percent={item.percent}
+              text={item.text}
+              animationDuration={3000 + index * 500}
+            />
           ))}
         </div>
       </div>
@@ -118,4 +179,4 @@ const Counter = () => {
   );
 };
 
-export default Counter;
+export default ProgressBarDemo;
