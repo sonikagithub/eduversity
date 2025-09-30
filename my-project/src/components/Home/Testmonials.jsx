@@ -45,22 +45,28 @@ const testimonials = [
   },
 ];
 
-// Custom Arrows
+// Custom Arrows with responsive positioning
 const NextArrow = ({ onClick }) => (
   <div
-    className="absolute top-1/2 right-[-40px] transform -translate-y-1/2 bg-red-500 text-white p-3 rounded-full cursor-pointer z-10 hover:bg-red-600 transition-colors"
+    className="absolute top-1/2 -translate-y-1/2 bg-red-500 text-white p-2 md:p-3 rounded-full cursor-pointer z-10 hover:bg-red-600 transition-colors hidden sm:block"
     onClick={onClick}
+    style={{
+      right: '-34px',
+    }}
   >
-    <FaArrowRight />
+    <FaArrowRight className="text-sm md:text-base" />
   </div>
 );
 
 const PrevArrow = ({ onClick }) => (
   <div
-    className="absolute top-1/2 left-[-40px] transform -translate-y-1/2 bg-red-500 text-white p-3 rounded-full cursor-pointer z-10 hover:bg-red-600 transition-colors"
+    className="absolute top-1/2 -translate-y-1/2 bg-red-500 text-white p-2 md:p-3 rounded-full cursor-pointer z-10 hover:bg-red-600 transition-colors hidden sm:block"
     onClick={onClick}
+    style={{
+      left: '-34px',
+    }}
   >
-    <FaArrowLeft />
+    <FaArrowLeft className="text-sm md:text-base" />
   </div>
 );
 
@@ -77,61 +83,116 @@ const Testimonials = () => {
     prevArrow: <PrevArrow />,
     responsive: [
       {
-        breakpoint: 1024,
-        settings: { slidesToShow: 2 },
+        breakpoint: 1280, // xl screens
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        }
       },
       {
-        breakpoint: 768,
-        settings: { slidesToShow: 1, arrows: false },
+        breakpoint: 1024, // lg screens
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: false,
+        }
       },
+      {
+        breakpoint: 768, // md screens
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          dots: true,
+        }
+      },
+      {
+        breakpoint: 640, // sm screens
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          dots: true,
+          centerMode: true,
+          centerPadding: '20px',
+        }
+      }
     ],
   };
 
   return (
-    <div className="bg-gray-100 py-16">
-      <div className="max-w-6xl mx-auto px-4">
+    <div className="bg-gray-100 py-8 md:py-12 lg:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-black">
-          Testimonials
-          <span className="block w-24 h-1 bg-red-500 mx-auto mt-3"></span>
-        </h2>
+        <div className="text-center mb-8 md:mb-12 lg:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Testimonials
+          </h2>
+          <div className="w-20 h-1 bg-red-500 mx-auto"></div>
+        </div>
 
-        {/* Slider */}
-        <Slider {...settings}>
-          {testimonials.map((item) => (
-            <div key={item.id} className="px-4">
-              <div className="bg-red-500 rounded-3xl shadow-lg p-8 text-center flex flex-col items-center min-h-[380px]">
-                
-                {/* Circle Image */}
-                <div className="w-24 h-24 rounded-full border-4 border-white overflow-hidden shadow-md mb-4">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover"
-                  />
+        {/* Slider Container */}
+        <div className="relative px-2 sm:px-4">
+          <Slider {...settings}>
+            {testimonials.map((item) => (
+              <div key={item.id} className="px-2 sm:px-3 lg:px-4">
+                <div className="bg-red-500 rounded-2xl sm:rounded-3xl shadow-lg p-4 sm:p-6 lg:p-8 text-center flex flex-col items-center min-h-[280px] sm:min-h-[320px] lg:min-h-[380px] mx-auto max-w-xs sm:max-w-none">
+                  
+                  {/* Circle Image */}
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full border-2 sm:border-4 border-white overflow-hidden shadow-md mb-3 sm:mb-4">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Stars */}
+                  <div className="flex justify-center mb-3 sm:mb-4 text-yellow-400">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar 
+                        key={i} 
+                        className="mx-0.5 sm:mx-1 text-xs sm:text-sm lg:text-base" 
+                      />
+                    ))}
+                  </div>
+
+                  {/* Text */}
+                  <p className="text-xs sm:text-sm lg:text-base text-white leading-relaxed mb-4 sm:mb-6 line-clamp-4 sm:line-clamp-none">
+                    {item.text}
+                  </p>
+
+                  {/* Name */}
+                  <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-white mt-auto">
+                    {item.name}
+                  </h3>
                 </div>
-
-                {/* Stars */}
-                <div className="flex justify-center mb-4 text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <FaStar key={i} className="mx-1" />
-                  ))}
-                </div>
-
-                {/* Text */}
-                <p className="text-sm text-white leading-relaxed mb-6">
-                  {item.text}
-                </p>
-
-                {/* Name */}
-                <h3 className="text-lg font-semibold text-white mt-auto">
-                  {item.name}
-                </h3>
               </div>
-            </div>
-          ))}
-        </Slider>
+            ))}
+          </Slider>
+        </div>
       </div>
+
+      {/* Custom styles for slick dots */}
+      <style jsx>{`
+        :global(.slick-dots) {
+          bottom: -40px !important;
+        }
+        :global(.slick-dots li button:before) {
+          font-size: 10px !important;
+        }
+        :global(.slick-dots li.slick-active button:before) {
+          color: #ef4444 !important;
+        }
+        @media (min-width: 768px) {
+          :global(.slick-dots) {
+            bottom: -50px !important;
+          }
+          :global(.slick-dots li button:before) {
+            font-size: 12px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

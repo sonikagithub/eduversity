@@ -1,18 +1,18 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
+import { FaBookOpen, FaAward, FaUsers, FaUserGraduate } from "react-icons/fa";
 
-const CircularProgressBar = ({ 
-  lineWidth = 6, 
-  color = "#1ABC9C", 
-  startingPosition = 25, 
-  percent = 80, 
-  percentage = true,
-  text = "JQuery Script Net",
-  animationDuration = 3000 
-}) => {
-  const [progress, setProgress] = useState(startingPosition);
+const Counter = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const progressRef = useRef(null);
-  const animationRef = useRef(null);
+  const counterRef = useRef(null);
+
+  const stats = [
+    { id: 1, icon: FaBookOpen, number: 50, suffix: "+", label: "Degree Programs" },
+    { id: 2, icon: FaAward, number: 15, suffix: "+", label: "Years Of History" },
+    { id: 3, icon: FaUsers, number: 5000, suffix: "+", label: "Students" },
+    { id: 4, icon: FaUserGraduate, number: 500, suffix: "+", label: "Alumni Network" },
+  ];
+
+  const [counts, setCounts] = useState(stats.map(() => 0));
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,16 +21,16 @@ const CircularProgressBar = ({
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.3 }
     );
 
-    if (progressRef.current) {
-      observer.observe(progressRef.current);
+    if (counterRef.current) {
+      observer.observe(counterRef.current);
     }
 
     return () => {
-      if (progressRef.current) {
-        observer.unobserve(progressRef.current);
+      if (counterRef.current) {
+        observer.unobserve(counterRef.current);
       }
     };
   }, []);
@@ -38,145 +38,59 @@ const CircularProgressBar = ({
   useEffect(() => {
     if (!isVisible) return;
 
-    let startValue = startingPosition;
-    const startTime = Date.now();
+    const duration = 2000; // 2 seconds
+    const frameDuration = 1000 / 60; // 60 fps
+    const totalFrames = Math.round(duration / frameDuration);
 
-    const animate = () => {
-      const currentTime = Date.now();
-      const elapsed = currentTime - startTime;
-      const progressRatio = Math.min(elapsed / animationDuration, 1);
+    stats.forEach((stat, index) => {
+      let frame = 0;
+      const counter = setInterval(() => {
+        frame++;
+        const progress = frame / totalFrames;
+        const currentCount = Math.round(stat.number * progress);
 
-      const easedProgress = progressRatio < 0.5 
-        ? 2 * progressRatio * progressRatio 
-        : -1 + (4 - 2 * progressRatio) * progressRatio;
+        setCounts(prev => {
+          const newCounts = [...prev];
+          newCounts[index] = currentCount;
+          return newCounts;
+        });
 
-      const currentProgress = Math.floor(startValue + easedProgress * (percent - startValue));
-      setProgress(currentProgress);
-
-      if (progressRatio < 1) {
-        animationRef.current = requestAnimationFrame(animate);
-      }
-    };
-
-    animationRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, [isVisible, percent, startingPosition, animationDuration]);
-
-  const radius = 90;
-  const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (progress /100) * circumference;
+        if (frame === totalFrames) {
+          clearInterval(counter);
+        }
+      }, frameDuration);
+    });
+  }, [isVisible]);
 
   return (
-    <div ref={progressRef} className="my-progress-bar flex justify-center items-center">
-      <div className="relative w-48 h-48">
-        <svg 
-          className="w-full h-full transform -rotate-90 circular-progress-bar" 
-          viewBox="0 0 200 200"
-        >
-          <circle
-            cx="100"
-            cy="100"
-            r={radius}
-            stroke="#e5e7eb"
-            strokeWidth={lineWidth}
-            fill="none"
-          />
-          <circle
-            cx="100"
-            cy="100"
-            r={radius}
-            stroke={color}
-            strokeWidth={lineWidth}
-            strokeLinecap="round"
-            fill="none"
-            strokeDasharray={circumference}
-            strokeDashoffset={strokeDashoffset}
-            className="transition-all duration-300 ease-out"
-          />
-        </svg>
+    <div ref={counterRef} className="bg-white py-16 px-6 md:px-20">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        {stats.map((item, index) => {
+          const Icon = item.icon;
+          return (
+            <div
+              key={item.id}
+              className="flex flex-col items-center text-center relative p-6"
+            >
+              {/* Big Icon */}
+              <Icon className="text-6xl text-red-500 mb-4" />
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <div className="text-center">
-            <div className="progress-percentage mb-1">
-              <span className="text-3xl font-bold text-gray-800">
-                {progress}
-              </span>
+              {/* Animated Counter */}
+              <h2 className="text-3xl font-bold text-black">
+                {counts[index].toLocaleString()}{item.suffix}
+              </h2>
+              <p className="text-lg font-medium text-gray-700">{item.label}</p>
+
+              {/* Vertical Divider (only for large screens, not last item) */}
+              {index !== stats.length - 1 && (
+                <div className="hidden lg:block absolute right-0 top-1/2 transform -translate-y-1/2 w-[1.5px] h-28 bg-red-500"></div>
+              )}
             </div>
-            <div className="progress-text">
-              <span className="text-sm text-gray-600">
-                {text}
-              </span>
-            </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
     </div>
   );
 };
 
-const ProgressBarDemo = () => {
-  const progressItems = [
-    {
-      lineWidth: 6,
-      color: "#1ABC9C",
-      startingPosition: 25,
-      percent: 50,
-      text: "Degree Programs"
-    },
-    {
-      lineWidth: 8,
-      color: "#3498DB",
-      startingPosition: 10,
-      percent: 15,
-      text: "Years Of History"
-    },
-    {
-      lineWidth: 6,
-      color: "#9B59B6",
-      startingPosition: 40,
-      percent: 5000,
-      text: "Students"
-    },
-    {
-      lineWidth: 10,
-      color: "#E74C3C",
-      startingPosition: 5,
-      percent: 500,
-      text: "Alumni Network"
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 flex items-center justify-center">
-      <div className="w-full max-w-6xl">
-        <h1 className="text-4xl font-bold text-center text-gray-800 mb-4">
-          Circular Progress Bars
-        </h1>
-        <p className="text-xl text-center text-gray-600 mb-12">
-          Four progress indicators in one line
-        </p>
-        
-        <div className="flex justify-center items-center gap-6">
-          {progressItems.map((item, index) => (
-            <CircularProgressBar
-              key={index}
-              lineWidth={item.lineWidth}
-              color={item.color}
-              startingPosition={item.startingPosition}
-              percent={item.percent}
-              text={item.text}
-              animationDuration={3000 + index * 500}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default ProgressBarDemo;
+export default Counter;

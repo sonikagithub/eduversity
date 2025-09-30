@@ -8,18 +8,22 @@ import Counter from '../Home/Counter'
 import CallExperts from '../Home/CallExperts'
 import Testmonials from '../Home/Testmonials'
 import Blog from '../Home/Blog'
+import Footer from '../Home/Footer'
 const HomeRoutes = () => {
   return (
     <div>
       <Hero/>
       <Navbar/>
+     
       <TopSpecilisation/>
+        
       <Academic/>
       <GrowSkills/>
-      <Counter/>
+     <Counter/>
       <CallExperts/>
       <Testmonials/>
       <Blog/>
+      <Footer/>
     </div>
   )
 }
