@@ -52,7 +52,6 @@ const Academic = () => {
                 </p>
               </div>
             ))}
-            <div className="w-1"></div>
           </div>
         </Marquee>
       </div>
@@ -75,7 +74,6 @@ const Academic = () => {
                 </p>
               </div>
             ))}
-            <div className="w-1"></div>
           </div>
         </Marquee>
       </div>

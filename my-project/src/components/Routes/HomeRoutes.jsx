@@ -9,17 +9,20 @@ import CallExperts from '../Home/CallExperts'
 import Testmonials from '../Home/Testmonials'
 import Blog from '../Home/Blog'
 import Footer from '../Home/Footer'
+import TopCourses from '../Home/TopCourses'
 const HomeRoutes = () => {
   return (
     <div>
       <Hero/>
       <Navbar/>
-     
+      <Counter/>
       <TopSpecilisation/>
-        
+      
+    
+       <GrowSkills/>
+       {/* <TopCourses/>  */}
       <Academic/>
-      <GrowSkills/>
-     <Counter/>
+     
       <CallExperts/>
       <Testmonials/>
       <Blog/>
