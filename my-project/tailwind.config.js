@@ -4,6 +4,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Poppins", "ui-sans-serif", "system-ui"], // Default sans will be Poppins
+      },
       animation: {
         'progress': 'progress 1s ease-in-out',
       },

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,9 +9,9 @@ const Navbar = () => {
     <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         {/* Logo */}
-        <a href="#" className="flex items-center space-x-3">
+        <Link to="/" className="flex items-center space-x-3">
           <span className="text-xl font-bold text-[#EE2C3C]">Eduversity</span>
-        </a>
+        </Link>
 
         {/* Right Side Button + Mobile Toggle */}
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -67,44 +68,63 @@ const Navbar = () => {
             md:dark:bg-gray-900 dark:border-gray-700"
           >
             <li>
-              <a
-                href="#"
-                className="block py-2 px-4 text-white bg-yellow-400 
-                hover:bg-[#EE2C3C] md:hover:bg-[#EE2C3C] md:hover:text-white 
-                rounded-full md:px-5 md:py-2 text-center transition-all duration-200"
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `block py-2 px-4 md:px-0 transition-all duration-200 ${
+                    isActive
+                      ? "text-[#EE2C3C] font-semibold"
+                      : "text-gray-900 hover:text-[#EE2C3C]"
+                  }`
+                }
               >
-                Online Courses
-              </a>
+                Home
+              </NavLink>
             </li>
+
             <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 
-                md:hover:bg-transparent md:hover:text-[#EE2C3C] md:p-0 
-                dark:text-white md:dark:hover:text-[#EE2C3C]"
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  `block py-2 px-3 transition-all duration-200 ${
+                    isActive
+                      ? "text-[#EE2C3C] font-semibold"
+                      : "text-gray-900 hover:text-[#EE2C3C]"
+                  }`
+                }
               >
                 About Us
-              </a>
+              </NavLink>
             </li>
+
             <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 
-                md:hover:bg-transparent md:hover:text-[#EE2C3C] md:p-0 
-                dark:text-white md:dark:hover:text-[#EE2C3C]"
+              <NavLink
+                to="/compare-colleges"
+                className={({ isActive }) =>
+                  `block py-2 px-3 transition-all duration-200 ${
+                    isActive
+                      ? "text-[#EE2C3C] font-semibold"
+                      : "text-gray-900 hover:text-[#EE2C3C]"
+                  }`
+                }
               >
                 Compare Colleges
-              </a>
+              </NavLink>
             </li>
+
             <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 
-                md:hover:bg-transparent md:hover:text-[#EE2C3C] md:p-0 
-                dark:text-white md:dark:hover:text-[#EE2C3C]"
+              <NavLink
+                to="/blog"
+                className={({ isActive }) =>
+                  `block py-2 px-3 transition-all duration-200 ${
+                    isActive
+                      ? "text-[#EE2C3C] font-semibold"
+                      : "text-gray-900 hover:text-[#EE2C3C]"
+                  }`
+                }
               >
                 Blog
-              </a>
+              </NavLink>
             </li>
 
             {/* Dropdown */}
@@ -112,8 +132,7 @@ const Navbar = () => {
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className="flex items-center justify-between w-full py-2 px-3 
-                text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent 
-                md:hover:text-[#EE2C3C] md:p-0 dark:text-white 
+                text-gray-900 hover:text-[#EE2C3C] md:p-0 dark:text-white 
                 md:dark:hover:text-[#EE2C3C]"
               >
                 More
@@ -134,28 +153,28 @@ const Navbar = () => {
                 <div className="absolute z-10 mt-2 w-48 bg-white rounded-lg shadow-lg dark:bg-gray-700">
                   <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
                     <li>
-                      <a
-                        href="#"
+                      <NavLink
+                        to="/partner"
                         className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
                       >
                         Partner with Us
-                      </a>
+                      </NavLink>
                     </li>
                     <li>
-                      <a
-                        href="#"
+                      <NavLink
+                        to="/contact"
                         className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
                       >
                         Contact Us
-                      </a>
+                      </NavLink>
                     </li>
                     <li>
-                      <a
-                        href="#"
+                      <NavLink
+                        to="/tools"
                         className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
                       >
                         Calculator Tools
-                      </a>
+                      </NavLink>
                     </li>
                   </ul>
                 </div>

@@ -5,6 +5,7 @@ import { FaThreads } from 'react-icons/fa6';
 const Footer = () => {
   const [ugExpanded, setUgExpanded] = useState(false);
   const [pgExpanded, setPgExpanded] = useState(false);
+  const [email, setEmail] = useState('');
 
   const ugPrograms = [
     'Bachelor of Business Administration (BBA)',
@@ -33,6 +34,14 @@ const Footer = () => {
 
   const displayedUgPrograms = ugExpanded ? ugPrograms : ugPrograms.slice(0, 3);
   const displayedPgPrograms = pgExpanded ? pgPrograms : pgPrograms.slice(0, 5);
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    // Handle subscription logic here
+    console.log('Subscribing email:', email);
+    setEmail('');
+    // Add your subscription API call or logic here
+  };
 
   return (
     <footer className="bg-[#191E27] text-white">
@@ -95,7 +104,7 @@ const Footer = () => {
                 <FaMapMarkerAlt className="w-5 h-5 mr-3 text-red-500 mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-white font-medium">Address</p>
-                  <p className="text-gray-300 text-sm">Office no- 520, 5th Floor, Parsvanath Plaza, Opposite Summit Building, Vibhuti Khand, Gomti Nagar, Lucknow</p>
+                  <p className="text-gray-300 text-sm">Office no- 520, 5th Floor, Parsvanath Plaza, Opposite Summit Building, Vibhuti Khand, Gomti Nagar, Lucknow </p>
                 </div>
               </div>
               <div className="flex items-center">
@@ -184,16 +193,22 @@ const Footer = () => {
             {/* Subscription Section */}
             <div className="mb-6">
               <h4 className="text-lg font-semibold mb-3 text-white">Subscribe to Newsletter</h4>
-              <div className="flex mb-2">
+              <form onSubmit={handleSubscribe} className="space-y-3">
                 <input 
                   type="email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 bg-gray-800 text-white rounded-l-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                  required
                 />
-                <button className="bg-red-500 hover:bg-red-600 px-6 py-3 rounded-r-lg transition-colors duration-200 font-medium">
+                <button 
+                  type="submit"
+                  className="w-full bg-red-500 hover:bg-red-600 px-6 py-3 rounded-lg transition-colors duration-200 font-medium transform hover:scale-105"
+                >
                   Subscribe
                 </button>
-              </div>
+              </form>
               <p className="text-xs text-gray-300 mt-2">Stay updated with our latest courses and news</p>
             </div>
 
