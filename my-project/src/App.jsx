@@ -4,6 +4,7 @@ import HomeRoutes from "./components/Routes/HomeRoutes";
 import About from "./components/AboutUs/About"
 import Layout from "./components/Layout";
 import CompairCollage from "./components/CompairCollage/CompairCollage";
+import Blog from "./components/Blog/Blog";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<HomeRoutes />} />
           <Route path="/about" element={<About />} />
            <Route path="/compaircollage" element={<CompairCollage />} />
+           <Route path="/blog" element={<Blog />} />
         </Routes>
       </Layout>
     </Router>

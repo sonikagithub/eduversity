@@ -99,7 +99,7 @@ const Navbar = () => {
 
             <li>
               <NavLink
-                to="/compare-colleges"
+                to="/compaircollage"
                 className={({ isActive }) =>
                   `block py-2 px-3 transition-all duration-200 ${
                     isActive

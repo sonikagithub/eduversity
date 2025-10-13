@@ -4,6 +4,7 @@ import Card from "../AboutUs/Card";
 import BookVisit from "./BookVisit";
 import MeetTeam from "./MeetTeam";
 import GetCall from "./GetCall";
+import SampleImage from '../../assets/Vector.png'
 
 export default function About() {
   return (
@@ -84,9 +85,13 @@ export default function About() {
       <div className="w-full mt-10">
         <MeetTeam />
       </div>
-       <div className="w-full mt-10">
-        <GetCall />
-      </div>
+     <GetCall
+      image={SampleImage}
+      title1="Have a Question?"
+      title2="We’re here to help!"
+      description="Our team is happy to assist you. Ask about colleges, courses, careers, or anything else. Our highly trained representatives are standing by to help."
+      buttonText="Call Us Now"
+    />
     </section>
   );
 }

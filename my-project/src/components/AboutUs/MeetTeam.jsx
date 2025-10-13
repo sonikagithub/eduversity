@@ -19,12 +19,12 @@ const MeetTeam = () => {
   return (
     <div className="w-full bg-white dark:bg-gray-900 py-12">
       <h2 className="text-4xl font-semibold text-center text-gray-800 dark:text-white mb-8">
-        Meet Our<span className="text-[#EE2C3C]"> Team</span>
+        Meet Our <span className="text-[#EE2C3C]">Team</span>
       </h2>
 
       {/* Marquee Section */}
       <div className="overflow-hidden mt-12">
-        <div className="flex gap-2 animate-marquee">
+        <div className="flex animate-marquee">
           {[...team, ...team].map((member, index) => (
             <div
               key={index}
@@ -37,7 +37,7 @@ const MeetTeam = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-gray-800 dark:text-white text-center">
+              <h3 className="mt-3 text-lg font-semibold text-gray-800 dark:text-white text-center">
                 {member.name}
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
@@ -58,7 +58,12 @@ const MeetTeam = () => {
 
           .animate-marquee {
             display: flex;
-            animation: marquee 20s linear infinite;
+            animation: marquee 25s linear infinite;
+          }
+
+          /* Remove gaps completely between cards */
+          .animate-marquee > div {
+            margin-right: 0;
           }
         `}
       </style>
