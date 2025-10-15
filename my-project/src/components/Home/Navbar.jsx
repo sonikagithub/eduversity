@@ -67,20 +67,22 @@ const Navbar = () => {
             md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 
             md:dark:bg-gray-900 dark:border-gray-700"
           >
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  `block py-2 px-4 md:px-0 transition-all duration-200 ${
-                    isActive
-                      ? "text-[#EE2C3C] font-semibold"
-                      : "text-gray-900 hover:text-[#EE2C3C]"
-                  }`
-                }
-              >
-                Home
-              </NavLink>
-            </li>
+          <li>
+  <NavLink
+    to="/"
+    className={({ isActive }) =>
+      `inline-block px-3 py-1 rounded-full font-semibold border-2 transition-all duration-300 
+      ${
+        isActive
+          ? "bg-[#EE2C3C] text-white border-[#EE2C3C] shadow-md scale-105"
+          : "text-[#EE2C3C] border-[#EE2C3C] hover:bg-[#EE2C3C] hover:text-white hover:shadow-md"
+      }`
+    }
+  >
+    Partner with us
+  </NavLink>
+</li>
+
 
             <li>
               <NavLink
@@ -112,9 +114,10 @@ const Navbar = () => {
               </NavLink>
             </li>
 
+            {/* New Top Universities Link */}
             <li>
               <NavLink
-                to="/blog"
+                to="/top-universities"
                 className={({ isActive }) =>
                   `block py-2 px-3 transition-all duration-200 ${
                     isActive
@@ -123,7 +126,7 @@ const Navbar = () => {
                   }`
                 }
               >
-                Blog
+                Top Universities
               </NavLink>
             </li>
 
@@ -152,10 +155,28 @@ const Navbar = () => {
               {isDropdownOpen && (
                 <div className="absolute z-10 mt-2 w-48 bg-white rounded-lg shadow-lg dark:bg-gray-700">
                   <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
+                    {/* Blog moved to dropdown */}
+                    <li>
+                      <NavLink
+                        to="/bloglisting"
+                        className={({ isActive }) =>
+                          `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 ${
+                            isActive ? "text-[#EE2C3C] font-semibold bg-gray-50 dark:bg-gray-600" : ""
+                          }`
+                        }
+                      >
+                        Blog
+                      </NavLink>
+                    </li>
+                    {/* Highlighted Partner with Us */}
                     <li>
                       <NavLink
                         to="/partner"
-                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                        className={({ isActive }) =>
+                          `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 ${
+                            isActive ? "text-[#EE2C3C] font-semibold bg-gray-50 dark:bg-gray-600" : "font-medium text-[#EE2C3C]"
+                          }`
+                        }
                       >
                         Partner with Us
                       </NavLink>
@@ -163,7 +184,11 @@ const Navbar = () => {
                     <li>
                       <NavLink
                         to="/contact"
-                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                        className={({ isActive }) =>
+                          `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 ${
+                            isActive ? "text-[#EE2C3C] font-semibold bg-gray-50 dark:bg-gray-600" : ""
+                          }`
+                        }
                       >
                         Contact Us
                       </NavLink>
@@ -171,7 +196,11 @@ const Navbar = () => {
                     <li>
                       <NavLink
                         to="/tools"
-                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                        className={({ isActive }) =>
+                          `block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 ${
+                            isActive ? "text-[#EE2C3C] font-semibold bg-gray-50 dark:bg-gray-600" : ""
+                          }`
+                        }
                       >
                         Calculator Tools
                       </NavLink>
