@@ -149,24 +149,30 @@ const BlogListing = () => {
         <div className="lg:col-span-1 space-y-8">
           
           {/* Categories Section */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <h3 className="text-xl font-bold text-gray-900 mb-4 pb-3 border-b border-gray-200">
-              Categories
-            </h3>
-            <ul className="space-y-3">
-              {categories.map((category, index) => (
-                <li 
-                  key={index}
-                  className="flex justify-between items-center py-2 px-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors duration-200"
-                >
-                  <span className="text-gray-700 font-medium">{category.name}</span>
-                  <span className="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-sm">
-                    {category.count}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
+         <div className="bg-white rounded-lg shadow-md p-4">
+  <h3 className="text-lg font-semibold text-red-600 mb-3 pb-2 border-b border-gray-100">
+    Categories
+  </h3>
+  <table className="w-full text-sm text-gray-700">
+    
+    <tbody>
+      {categories.map((category, index) => (
+        <tr
+          key={index}
+          className="hover:bg-gray-50 transition-colors duration-150 cursor-pointer"
+        >
+          <td className="py-2 px-1">{category.name}</td>
+          <td className="py-2 px-1 text-right">
+            <span className="bg-red-100 text-red-600 px-2 py-0.5 rounded-full text-xs">
+              {category.count}
+            </span>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
 
           {/* Recent Posts Section */}
           <div className="bg-white rounded-xl shadow-lg p-6">

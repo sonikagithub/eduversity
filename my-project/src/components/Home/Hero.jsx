@@ -199,13 +199,13 @@ const Hero = () => {
             <div className="w-full lg:w-1/2 xl:w-2/5">
               {/* University Logo */}
               <div className="mb-4">
-                <div className="bg-white rounded-lg p-2 shadow-lg inline-block">
+                {/* <div className="bg-white rounded-lg p-2 shadow-lg inline-block">
                   <img
                     src={currentUniversity.logo}
                     alt={`${currentUniversity.name} Logo`}
                     className="w-32 h-8 sm:w-40 sm:h-10 object-contain"
                   />
-                </div>
+                </div> */}
               </div>
 
               {/* University Name and Description - FIXED */}

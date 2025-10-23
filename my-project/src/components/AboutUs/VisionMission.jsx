@@ -11,7 +11,7 @@ const VisionMission = () => {
           <img
             src={Image1}
             alt="Mission"
-            className="rounded-2xl w-80 md:w-96 h-auto object-contain"
+            className="rounded-2xl w-64 md:w-80 h-64 md:h-80 object-contain"
           />
         </div>
 
@@ -33,7 +33,7 @@ const VisionMission = () => {
           <img
             src={Image2}
             alt="Vision"
-            className="rounded-2xl w-80 md:w-96 h-auto object-contain"
+            className="rounded-2xl w-64 md:w-80 h-64 md:h-80 object-contain"
           />
         </div>
 

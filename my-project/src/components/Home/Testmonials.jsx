@@ -177,31 +177,10 @@ const Testimonials = () => {
           </div>
         </div>
 
-        {/* Statistics Section */}
-        {/* <div className="text-center mt-16">
-          <h2 className="text-3xl font-bold text-black mb-12">Our Impact in Numbers</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-gray-700">
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-              <p className="text-3xl font-bold text-[#EE2C3C]">50K+</p>
-              <p className="mt-2 font-medium text-black">Students Enrolled</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-              <p className="text-3xl font-bold text-[#EE2C3C]">95%</p>
-              <p className="mt-2 font-medium text-black">Completion Rate</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-              <p className="text-3xl font-bold text-[#EE2C3C]">4.8/5</p>
-              <p className="mt-2 font-medium text-black">Average Rating</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
-              <p className="text-3xl font-bold text-[#EE2C3C]">200+</p>
-              <p className="mt-2 font-medium text-black">Expert Instructors</p>
-            </div>
-          </div>
-        </div> */}
+      
 
         {/* CTA Section */}
-        <div className="text-center mt-16">
+        {/* <div className="text-center mt-16">
           <div className="bg-[#EE2C3C] text-white p-8 rounded-2xl shadow-lg">
             <h2 className="text-2xl font-bold mb-4">Ready to Start Your Learning Journey?</h2>
             <p className="text-lg mb-6 opacity-90">
@@ -216,10 +195,10 @@ const Testimonials = () => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Trust Indicators */}
-        <div className="text-center mt-16">
+        {/* <div className="text-center mt-16">
           <p className="text-gray-600 mb-6">Trusted by students and professionals from</p>
           <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
             <span className="text-lg font-semibold text-gray-700">IITs & NITs</span>
@@ -229,7 +208,7 @@ const Testimonials = () => {
             <span className="text-lg font-semibold text-gray-700">Google</span>
             <span className="text-lg font-semibold text-gray-700">Microsoft</span>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
