@@ -7,6 +7,7 @@ import CompairCollage from "./components/CompairCollage/CompairCollage";
 import BlogListing from "./components/Blog/BlogListing";
 import Blog from "./components/Home/Blog";
 import BlogDetails from "./components/Blog/BlogDetails";
+import Courses from "./components/Courses/Courses";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
 <Route path="/blog/:id" element={<BlogDetails />} />
 <Route path="/bloglisting" element={<BlogListing />} />
+<Route path="/courses" element={<Courses />} />
         </Routes>
       </Layout>
     </Router>

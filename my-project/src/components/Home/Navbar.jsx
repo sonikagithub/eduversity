@@ -7,6 +7,11 @@ const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isCoursesDropdownOpen, setIsCoursesDropdownOpen] = useState(false);
 
+  // Function to handle navigation and close dropdown
+  const handleNavigation = () => {
+    setIsCoursesDropdownOpen(false);
+  };
+
   return (
     <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -65,11 +70,9 @@ const Navbar = () => {
               md:dark:bg-gray-900 dark:border-gray-700"
           >
             {/* ✅ Online Courses Dropdown */}
-            <li className="relative"
-                onMouseEnter={() => setIsCoursesDropdownOpen(true)}
-                onMouseLeave={() => setIsCoursesDropdownOpen(false)}>
+            <li className="relative">
               <button
-                onClick={() => setIsCoursesDropdownOpen(!isCoursesDropdownOpen)}
+                onMouseEnter={() => setIsCoursesDropdownOpen(true)}
                 className={`flex items-center justify-between py-2 px-3 
                   transition-all duration-200 md:p-0 ${
                   isCoursesDropdownOpen
@@ -91,15 +94,26 @@ const Navbar = () => {
                 </svg>
               </button>
               
-             {isCoursesDropdownOpen && (
-  <div className="fixed inset-0 z-30 flex items-center justify-center">
-  <div className="w-[90vw] h-[90vh] max-w-6xl bg-white rounded-2xl shadow-2xl border border-gray-200">
-    <div className="p-4">
-      <CoursesTag />
-    </div>
-  </div>
-</div>
-)}
+              {/* Dropdown Container */}
+              {isCoursesDropdownOpen && (
+                <div 
+                  className="fixed inset-0 z-30 flex items-center justify-center"
+                  onMouseLeave={() => setIsCoursesDropdownOpen(false)}
+                >
+                  {/* Backdrop - covers entire screen but only closes dropdown when cursor leaves the entire container */}
+                  <div className="absolute inset-0 bg-black bg-opacity-10"></div>
+                  
+                  {/* Dropdown Content */}
+                  <div 
+                    className="relative w-[90vw] h-[90vh] max-w-6xl bg-white rounded-2xl shadow-2xl border border-gray-200 z-40"
+                    onMouseLeave={() => setIsCoursesDropdownOpen(false)}
+                  >
+                    <div className="p-4 h-full">
+                      <CoursesTag onNavigate={handleNavigation} />
+                    </div>
+                  </div>
+                </div>
+              )}
             </li>
 
             {/* About Us */}

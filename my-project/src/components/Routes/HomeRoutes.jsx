@@ -9,6 +9,8 @@ import CallExperts from "../Home/CallExperts";
 import Testmonials from "../Home/Testmonials";
 import Blog from "../Home/Blog";
 import Footer from "../Home/Footer";
+import SuccessStory from "../Home/SuccessStory";
+import PlacedStudent from "../Home/PlacedStudent";
 
 const HomeRoutes = () => {
   return (
@@ -21,6 +23,8 @@ const HomeRoutes = () => {
       <Academic />
       <CallExperts />
       <Testmonials />
+      <SuccessStory/>
+      <PlacedStudent/>
       <Blog />
    
     </div>

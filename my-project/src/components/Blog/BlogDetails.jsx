@@ -147,6 +147,7 @@ const BlogDetails = () => {
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
+          
           {/* Main Blog Content */}
           <div className="lg:w-2/3">
             {/* Blog Header */}
