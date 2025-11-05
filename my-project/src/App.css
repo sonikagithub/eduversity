@@ -20,3 +20,35 @@
 .clip-rect-tl {
   clip-path: rect(0 0.5em 1em 0em);
 }
+/* Marquee Animations */
+.marquee-left-to-right {
+  animation: marqueeLeftToRight 30s linear infinite;
+}
+
+.marquee-right-to-left {
+  animation: marqueeRightToLeft 30s linear infinite;
+}
+
+@keyframes marqueeLeftToRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes marqueeRightToLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause marquee on hover */
+.marquee-container:hover .marquee-left-to-right,
+.marquee-container:hover .marquee-right-to-left {
+  animation-play-state: paused;
+}

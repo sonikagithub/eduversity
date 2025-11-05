@@ -22,7 +22,7 @@ const HomeRoutes = () => {
       <GrowSkills />
       <Academic />
       <CallExperts />
-      <Testmonials />
+      {/* <Testmonials /> */}
       <SuccessStory/>
       <PlacedStudent/>
       <Blog />

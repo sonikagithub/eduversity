@@ -8,6 +8,7 @@ import BlogListing from "./components/Blog/BlogListing";
 import Blog from "./components/Home/Blog";
 import BlogDetails from "./components/Blog/BlogDetails";
 import Courses from "./components/Courses/Courses";
+import CourseDetails from "./components/Courses/CourseDetails";
 
 function App() {
   return (
@@ -17,11 +18,11 @@ function App() {
           <Route path="/" element={<HomeRoutes />} />
           <Route path="/about" element={<About />} />
           <Route path="/compaircollage" element={<CompairCollage />} />
-        
-        <Route path="/blog" element={<Blog />} />
-<Route path="/blog/:id" element={<BlogDetails />} />
-<Route path="/bloglisting" element={<BlogListing />} />
-<Route path="/courses" element={<Courses />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogDetails />} />
+          <Route path="/bloglisting" element={<BlogListing />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/coursedetails" element={<CourseDetails />} />
         </Routes>
       </Layout>
     </Router>

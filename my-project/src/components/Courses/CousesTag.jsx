@@ -213,7 +213,7 @@ const CoursesTag = ({ onNavigate }) => {
                 />
               </div>
               <button
-                onClick={() => navigate("/courses")}
+                onClick={() => navigate("/coursedetails")}
                 className="bg-[#EE2C3C] text-white px-5 py-2 rounded-lg hover:bg-red-700 transition"
               >
                 All Courses

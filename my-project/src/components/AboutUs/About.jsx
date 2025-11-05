@@ -12,41 +12,58 @@ export default function About() {
     <section className="w-full flex flex-col items-center justify-center bg-white dark:bg-gray-900 py-16">
       {/* MAIN ABOUT CONTENT */}
       <div className="w-full max-w-7xl mx-auto grid gap-12 md:grid-cols-2 items-center px-6">
-        {/* LEFT: Text content */}
-        <div className="text-center md:text-left">
-          <p className="text-lg uppercase text-[#EE2C3C] mb-3">
-            Eduversity Edutech – Where Ambitions Take Flight
-          </p>
-          <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
-            We make learning easy to access, interactive, and uniquely yours.
-          </h2>
-          <p className="text-gray-700 leading-relaxed mb-6">
-            At Eduversity, we make learning accessible, engaging, and
-            personalized. Since 2012, under{" "}
-            <strong className="text-[#EE2C3C]">
-              ABLAZE EDUCATIONAL FOUNDATION
-            </strong>
-            , we’ve delivered quality education through innovative technology,
-            flexible programs, and industry-relevant content. More than a
-            platform, we’re a community helping learners gain skills, advance
-            careers, and unlock opportunities — anytime, anywhere.
-          </p>
+      {/* LEFT: Text content */}
+<div className="text-center md:text-left">
+  <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
+    Our Journey — From Guidance to Growth 
+  </h2>
 
-          <div className="flex justify-center md:justify-start gap-3">
-            <a
-              href="#courses"
-              className="inline-block px-6 py-3 bg-[#EE2C3C] text-white rounded-lg shadow hover:bg-[#d92433] transition"
-            >
-              Explore Courses
-            </a>
-            <a
-              href="#about"
-              className="inline-block px-6 py-3 border border-[#EE2C3C] text-[#EE2C3C] rounded-lg hover:bg-red-50 transition"
-            >
-              Learn More
-            </a>
-          </div>
-        </div>
+  <p className="text-gray-700 leading-relaxed mb-6">
+    What began in <strong>2011</strong> as a small dream in <strong>Bhopal</strong> 
+    has evolved into one of India’s most trusted <strong>EdTech success stories!</strong> 
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-6">
+    From guiding students to the 
+    <strong className="text-[#EE2C3C]"> Right University </strong> and 
+    <strong className="text-[#EE2C3C]"> Right Course,</strong> 
+    to collaborating with top universities like <strong>Amity</strong>, 
+    <strong> Manipal</strong>, <strong>Mangalayatan</strong>, and 
+    <strong> GLA Online</strong>, we’ve empowered 
+    <strong> 5,000+ learners</strong> to build brighter careers.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-6">
+    With strong foundations in <strong>Kanpur</strong> and <strong>Lucknow</strong>, 
+    and <strong>50+ counselling centers</strong> across <strong>U.P.</strong>, 
+    <strong> M.P.</strong>, <strong>Bihar</strong>, and <strong>Rajasthan</strong>, 
+    Eduversity continues to lead the way — proudly aligned with 
+    <strong> NSDC Skill Development Programs</strong> under Central and State Government 
+    initiatives.
+  </p>
+
+  <p className="text-gray-700 leading-relaxed mb-8">
+    It’s where <strong>guidance meets growth</strong>, and 
+    <strong> learning sparks transformation.</strong> 
+  </p>
+
+  <div className="flex justify-center md:justify-start gap-3">
+    <a
+      href="#courses"
+      className="inline-block px-6 py-3 bg-[#EE2C3C] text-white rounded-lg shadow hover:bg-[#d92433] transition"
+    >
+      Explore Courses
+    </a>
+    <a
+      href="#about"
+      className="inline-block px-6 py-3 border border-[#EE2C3C] text-[#EE2C3C] rounded-lg hover:bg-red-50 transition"
+    >
+      Learn More
+    </a>
+  </div>
+</div>
+
+
 
         {/* RIGHT: Video */}
         <div className="w-full flex justify-center">
