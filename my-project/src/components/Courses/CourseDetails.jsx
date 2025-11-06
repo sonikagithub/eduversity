@@ -6,6 +6,12 @@ import Logo2 from "../../assets/AICTE.png";
 import Logo3 from "../../assets/AICTE.png";
 import Specilization from "./Specilization";
 import WhyChoose from "./WhyChoose";
+import CourseSkills from "./CourseSkills";
+import ProgramBenifit from "./ProgramBenifit";
+import Semester from "./Semester";
+import CourseCertificate from "./CourseCertificate";
+import CollageCareer from "./CollageCareer";
+import CourseJob from "./CourseJob";
 
 const CourseDetails = () => {
   const [activeTab, setActiveTab] = useState("specializations");
@@ -218,6 +224,12 @@ const CourseDetails = () => {
       </section>
       <Specilization/>
       <WhyChoose/>
+      <CourseSkills/>
+      <ProgramBenifit/>
+      <Semester/>
+      <CourseCertificate/>  
+      <CollageCareer/>
+      <CourseJob/>
     </>
   );
 };

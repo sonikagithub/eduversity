@@ -19,7 +19,7 @@ export default function About() {
   </h2>
 
   <p className="text-gray-700 leading-relaxed mb-6">
-    What began in <strong>2011</strong> as a small dream in <strong>Bhopal</strong> 
+    What began in <strong>2011</strong> as a small dream in <strong>Bhopal </strong> 
     has evolved into one of India’s most trusted <strong>EdTech success stories!</strong> 
   </p>
 
@@ -97,9 +97,7 @@ export default function About() {
         <Card />
       </div>
 
-      <div className="w-full mt-10">
-        <BookVisit />
-      </div>
+      
       <div className="w-full mt-10">
         <MeetTeam />
       </div>
@@ -110,7 +108,9 @@ export default function About() {
       description="Our team is happy to assist you. Ask about colleges, courses, careers, or anything else. Our highly trained representatives are standing by to help."
       buttonText="Call Us Now"
     /> */}
-    <CTATrustSection/>
+   <div className="w-full mt-10">
+        <BookVisit />
+      </div>
     </section>
   );
 }

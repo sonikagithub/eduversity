@@ -26,26 +26,26 @@ const Card = () => {
   ];
 
   return (
-    <section className="w-full bg-[#EE2C3C] dark:bg-gray-900 py-16">
+    <section className="w-full bg-[#EE2C3C] py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {cards.map((card, index) => (
             <div
               key={index}
-              className="flex flex-col p-6 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 hover:bg-white/20"
+              className="flex flex-col items-start p-6 bg-white rounded-2xl shadow-lg"
             >
               {/* Icon + Title Row */}
               <div className="flex items-center gap-4 mb-4">
-                <div className="text-white text-4xl sm:text-5xl p-4 bg-white/20 rounded-2xl">
+                <div className="text-[#EE2C3C] text-4xl sm:text-5xl p-4 bg-red-100 rounded-2xl">
                   {card.icon}
                 </div>
-                <h3 className="text-white text-base sm:text-lg font-semibold leading-snug">
+                <h3 className="text-black text-base sm:text-lg font-semibold leading-snug">
                   {card.title}
                 </h3>
               </div>
 
               {/* Description */}
-              <p className="text-gray-100 text-sm sm:text-base leading-relaxed">
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
                 {card.desc}
               </p>
             </div>
