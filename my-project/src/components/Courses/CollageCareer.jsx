@@ -39,7 +39,7 @@ const CollageCareer = () => {
     <div className="bg-gray-50 py-16 px-6 lg:px-20">
       {/* Heading */}
       <h2 className="text-3xl sm:text-4xl font-bold text-center text-black mb-12">
-        Career Prospect
+        Career <span className='text-red-600'>Prospect</span>
       </h2>
 
       {/* Cards Grid */}

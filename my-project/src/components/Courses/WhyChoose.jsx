@@ -1,5 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { FaGraduationCap, FaShieldAlt, FaHandshake, FaChevronLeft, FaChevronRight, FaStar } from 'react-icons/fa';
+import {
+  FaGraduationCap,
+  FaShieldAlt,
+  FaHandshake,
+  FaChevronLeft,
+  FaChevronRight,
+  FaStar,
+} from 'react-icons/fa';
 
 const WhyChoose = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -8,34 +15,34 @@ const WhyChoose = () => {
   const cards = [
     {
       icon: FaGraduationCap,
-      title: "On-Campus Degrees",
-      content: "Gain the same credibility, expert mentorship, career opportunities, and exposure as traditional on-campus programs.",
-      color: "from-blue-500 to-blue-600"
+      title: 'On-Campus Degrees',
+      content:
+        'Gain the same credibility, expert mentorship, career opportunities, and exposure as traditional on-campus programs.',
     },
     {
       icon: FaShieldAlt,
-      title: "Attractive Scholarships",
-      content: "Avail scholarships for meritorious students, defense personnel, government employees, and the differently-abled.",
-      color: "from-green-500 to-green-600"
+      title: 'Attractive Scholarships',
+      content:
+        'Avail scholarships for meritorious students, defense personnel, government employees, and the differently-abled.',
     },
     {
       icon: FaHandshake,
-      title: "Placement Assistance",
-      content: "Benefit from personalized resume building, interview preparation, skill assessments, and placement drives.",
-      color: "from-purple-500 to-purple-600"
+      title: 'Placement Assistance',
+      content:
+        'Benefit from personalized resume building, interview preparation, skill assessments, and placement drives.',
     },
     {
       icon: FaStar,
-      title: "Industry Relevant Curriculum",
-      content: "Learn from constantly updated curriculum designed in collaboration with industry experts and top companies.",
-      color: "from-orange-500 to-orange-600"
+      title: 'Industry Relevant Curriculum',
+      content:
+        'Learn from constantly updated curriculum designed in collaboration with industry experts and top companies.',
     },
     {
       icon: FaGraduationCap,
-      title: "Flexible Learning",
-      content: "Study at your own pace with recorded lectures, live sessions, and 24/7 access to learning materials.",
-      color: "from-red-500 to-red-600"
-    }
+      title: 'Flexible Learning',
+      content:
+        'Study at your own pace with recorded lectures, live sessions, and 24/7 access to learning materials.',
+    },
   ];
 
   const nextSlide = useCallback(() => {
@@ -88,7 +95,7 @@ const WhyChoose = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900">
-            Why Choose Our Programs?
+            Why Choose <span className="text-red-600">Our Programs?</span>
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4">
             Discover the unique advantages that make our programs stand out and
@@ -103,15 +110,13 @@ const WhyChoose = () => {
               {visibleCards.map((card, index) => (
                 <div key={index} className="w-full flex-shrink-0 px-3">
                   <div className="bg-white rounded-2xl shadow-md p-8 h-80 flex flex-col items-center text-center border border-gray-200">
-                    <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${card.color} flex items-center justify-center mb-6 shadow-md`}>
+                    <div className="w-16 h-16 bg-red-600 flex items-center justify-center mb-6 shadow-md">
                       <card.icon className="w-7 h-7 text-white" />
                     </div>
                     <h3 className="text-xl font-semibold text-gray-800 mb-3">
                       {card.title}
                     </h3>
-                    <p className="text-gray-600 text-base">
-                      {card.content}
-                    </p>
+                    <p className="text-gray-600 text-base">{card.content}</p>
                   </div>
                 </div>
               ))}
@@ -172,15 +177,13 @@ const WhyChoose = () => {
                 key={index}
                 className="bg-white rounded-2xl shadow-md p-10 h-80 flex flex-col items-center text-center border border-gray-200"
               >
-                <div className={`w-20 h-20 rounded-full bg-gradient-to-r ${card.color} flex items-center justify-center mb-6 shadow-md`}>
+                <div className="w-20 h-20 bg-red-600 flex items-center justify-center mb-6 shadow-md">
                   <card.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-semibold text-gray-800 mb-3">
                   {card.title}
                 </h3>
-                <p className="text-gray-600 text-base">
-                  {card.content}
-                </p>
+                <p className="text-gray-600 text-base">{card.content}</p>
               </div>
             ))}
           </div>
